@@ -19,8 +19,5 @@ spring:
           uri: http://localhost:9003
           predicates:
             - Path=api/reclamos**
-#        - id: servicio3
-#          uri: http://localhost:9003
-#          predicates:
-#           - Path=/api/cuenta/**
+
            
