@@ -32,8 +32,3 @@ spring:
             - Path=/api/respuestas/**
           filters:
             - AuthenticationFilter
-        
-eureka:
-  client:
-    serviceUrl:
-      defaultzone: http://localhost:8761/eureka/
