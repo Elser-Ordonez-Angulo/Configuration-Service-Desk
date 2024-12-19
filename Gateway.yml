@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: Gateway-Service
+    name: Gateway
   cloud:
     gateway:
       routes:
@@ -20,15 +20,8 @@ spring:
             - Path=/api/reclamos/**
           filters:
             - AuthenticationFilter
-        - id: servicio3
-          uri: http://localhost:9006
-          predicates:
-            - Path=/api/operaciones/**
-          filters:
-            - AuthenticationFilter
-        - id: servicio4
-          uri: http://localhost:9005
-          predicates:
-            - Path=/api/respuestas/**
-          filters:
-            - AuthenticationFilter
+
+eureka:
+  client:
+    serviceUrl:
+      defaultzone: http://localhost:8761/eureka/
