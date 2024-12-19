@@ -1,13 +1,9 @@
 server:
- port: 8082
-
-
-eureka:
-  client:
-    serviceUrl:
-      defaultzone: http://localhost:8761/eureka/
+  port: 8082
 
 spring:
+  application:
+    name: Gateway-Service
   cloud:
     gateway:
       routes:
@@ -15,9 +11,29 @@ spring:
           uri: http://localhost:9002
           predicates:
             - Path=/api/usuario/**
+          filters:
+            - AuthenticationFilter
+
         - id: servicio2
           uri: http://localhost:9003
           predicates:
-            - Path=api/reclamos**
-
-           
+            - Path=/api/reclamos/**
+          filters:
+            - AuthenticationFilter
+        - id: servicio3
+          uri: http://localhost:9006
+          predicates:
+            - Path=/api/operaciones/**
+          filters:
+            - AuthenticationFilter
+        - id: servicio4
+          uri: http://localhost:9005
+          predicates:
+            - Path=/api/respuestas/**
+          filters:
+            - AuthenticationFilter
+        
+eureka:
+  client:
+    serviceUrl:
+      defaultzone: http://localhost:8761/eureka/
